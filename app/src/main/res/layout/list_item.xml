@@ -4,13 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="10dp">
+    android:padding="8dp">
 
     <TextView
-        android:id="@+id/tvAnimalName"
+        android:id="@+id/listItemTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="test123"
-        android:textSize="20sp" />
+        android:fontFamily="monospace"
+        android:textSize="28sp" />
 
 </LinearLayout>

@@ -10,17 +10,38 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
 import com.example.rpncalculator.databinding.ActivityMainBinding
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
+    private lateinit var stack: ArrayDeque<ListItemModel>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val recyclerview = findViewById<RecyclerView>(R.id.recyclerView)
+        recyclerview.layoutManager = LinearLayoutManager(this)
+
+        stack = ArrayDeque<ListItemModel>()
+
+
+        for (i in 1..4) {
+            stack.addLast(ListItemModel("$i: Stack Item"))
+        }
+
+        stack.addLast(ListItemModel("> 123456"))
+
+        val adapter = ListAdapter(stack)
+        recyclerview.adapter = adapter
+
+        recyclerview.scrollToPosition(stack.size - 1)
+
 
 //        setSupportActionBar(binding.toolbar)
 
