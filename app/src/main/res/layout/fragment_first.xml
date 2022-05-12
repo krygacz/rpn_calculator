@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FirstFragment">
+
+    <Button
+        android:id="@+id/buttonSettings"
+        style="@style/Widget.Material3.Button.IconButton"
+        android:layout_width="48dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="4dp"
+        app:icon="@drawable/ic_baseline_settings_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <LinearLayout style="@style/GridRow">
+
+            <Button
+                android:id="@+id/buttonDrop"
+                style="@style/GridButtonDark"
+                android:text="@string/buttonDrop" />
+
+            <Button
+                android:id="@+id/buttonSwap"
+                style="@style/GridButtonDark"
+                android:text="@string/buttonSwap" />
+
+
+            <Button
+                android:id="@+id/buttonPower"
+                style="@style/GridButtonDark"
+                android:text="@string/buttonPower" />
+
+            <Button
+                android:id="@+id/buttonRoot"
+                style="@style/GridButtonDark"
+                android:text="@string/buttonRoot" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/GridRow">
+
+
+            <Button
+                android:id="@+id/buttonBackspace"
+                style="@style/GridButtonDark"
+                android:layout_weight="2"
+                android:text="@string/buttonBackspace" />
+
+            <Button
+                android:id="@+id/buttonAC"
+                style="@style/GridButtonDark"
+                android:text="@string/buttonAC" />
+
+            <Button
+                android:id="@+id/buttonDivide"
+                style="@style/GridButtonDark"
+                android:text="@string/buttonDivide" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/GridRow">
+
+            <Button
+                android:id="@+id/buttonKey7"
+                style="@style/GridButtonLight"
+                android:text="@string/buttonKey7" />
+
+            <Button
+                android:id="@+id/buttonKey8"
+                style="@style/GridButtonLight"
+                android:text="@string/buttonKey8" />
+
+            <Button
+                android:id="@+id/buttonKey9"
+                style="@style/GridButtonLight"
+                android:text="@string/buttonKey9" />
+
+
+            <Button
+                android:id="@+id/buttonMultiply"
+                style="@style/GridButtonDark"
+                android:text="@string/buttonMultiply" />
+
+
+        </LinearLayout>
+
+        <LinearLayout style="@style/GridRow">
+
+            <Button
+                android:id="@+id/buttonKey4"
+                style="@style/GridButtonLight"
+                android:text="@string/buttonKey4" />
+
+            <Button
+                android:id="@+id/buttonKey5"
+                style="@style/GridButtonLight"
+                android:text="@string/buttonKey5" />
+
+            <Button
+                android:id="@+id/buttonKey6"
+                style="@style/GridButtonLight"
+                android:text="@string/buttonKey6" />
+
+
+            <Button
+                android:id="@+id/buttonSubtract"
+                style="@style/GridButtonDark"
+                android:text="@string/buttonSubtract" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/GridRow">
+
+            <Button
+                android:id="@+id/buttonKey1"
+                style="@style/GridButtonLight"
+                android:text="@string/buttonKey1" />
+
+            <Button
+                android:id="@+id/buttonKey2"
+                style="@style/GridButtonLight"
+                android:text="@string/buttonKey2" />
+
+            <Button
+                android:id="@+id/buttonKey3"
+                style="@style/GridButtonLight"
+                android:text="@string/buttonKey3" />
+
+            <Button
+                android:id="@+id/buttonAdd"
+                style="@style/GridButtonDark"
+                android:text="@string/buttonAdd" />
+
+
+        </LinearLayout>
+
+        <LinearLayout style="@style/GridRow">
+
+            <Button
+                android:id="@+id/buttonKey0"
+                style="@style/GridButtonLight"
+                android:text="@string/buttonKey0" />
+
+            <Button
+                android:id="@+id/buttonChangeSign"
+                style="@style/GridButtonLight"
+                android:text="@string/buttonChangeSign" />
+
+            <Button
+                android:id="@+id/buttonDot"
+                style="@style/GridButtonLight"
+                android:text="@string/buttonDot" />
+
+            <Button
+                android:id="@+id/buttonEnter"
+                style="@style/GridButtonDarkAccent"
+                android:text="@string/buttonEnter" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginBottom="2dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
