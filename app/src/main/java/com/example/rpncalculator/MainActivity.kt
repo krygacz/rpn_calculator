@@ -1,5 +1,6 @@
 package com.example.rpncalculator
 
+import android.content.Intent
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
@@ -32,6 +33,7 @@ class MainActivity : AppCompatActivity() {
 
         this.binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
 
         this.recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
         val layoutManager = LinearLayoutManager(this)
@@ -110,14 +112,21 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.buttonAC).setOnClickListener {
             this.ac()
         }
+
+        findViewById<Button>(R.id.buttonSettings).setOnClickListener {
+            val i = Intent(this, SettingsActivity::class.java)
+            startActivity(i)
+        }
+
+
     }
 
 
-    override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.nav_host_fragment_content_main)
-        return navController.navigateUp(appBarConfiguration)
-                || super.onSupportNavigateUp()
-    }
+//    override fun onSupportNavigateUp(): Boolean {
+//        val navController = findNavController(R.id.nav_host_fragment_content_main)
+//        return navController.navigateUp(appBarConfiguration)
+//                || super.onSupportNavigateUp()
+//    }
 
     private fun inputKey(value: String) {
         this.input.visibility = View.VISIBLE
@@ -127,7 +136,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun enter() {
         val input = findViewById<TextView>(R.id.inputTextView)
-        this.stack.addFirst(ListItemModel(input.text.toString()))
+        this.stack.addFirst(ListItemModel(input.text.toString().toDouble()))
         this.recyclerView.adapter!!.notifyDataSetChanged()
         this.input.text = ""
         this.input.visibility = View.GONE
@@ -135,10 +144,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun genericOperation(operation: (Double, Double) -> Double) {
         if(stack.size < 2) return
-        val item2 = stack.removeFirst().text.toDouble()
-        val item1 = stack.removeFirst().text.toDouble()
+        val item2 = stack.removeFirst().value
+        val item1 = stack.removeFirst().value
         val result: Double = operation(item1, item2)
-        this.stack.addFirst(ListItemModel(result.toString()))
+        this.stack.addFirst(ListItemModel(result))
         this.recyclerView.adapter!!.notifyItemRemoved(1)
         this.recyclerView.adapter!!.notifyItemChanged(0)
     }
@@ -153,7 +162,7 @@ class MainActivity : AppCompatActivity() {
     private fun drop() {
         if(this.stack.size < 1) return
         val input = findViewById<TextView>(R.id.inputTextView)
-        input.text = this.stack.removeFirst().text
+        input.text = this.stack.removeFirst().value.toString()
         input.visibility = View.VISIBLE
         this.recyclerView.adapter!!.notifyItemRemoved(0)
         this.recyclerView.adapter!!.notifyItemRangeChanged(0, this.recyclerView.adapter!!.itemCount)
@@ -161,8 +170,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun changeSign() {
         if(this.stack.size < 1) return
-        val modifiedItem = this.stack.removeFirst().text.toDouble() * -1
-        this.stack.addFirst(ListItemModel(modifiedItem.toString()))
+        this.stack[0].value *= -1
         this.recyclerView.adapter!!.notifyItemChanged(0)
     }
 

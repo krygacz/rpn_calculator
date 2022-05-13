@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import java.util.*
 
 class ListAdapter(private val list: List<ListItemModel>) : RecyclerView.Adapter<ListAdapter.ViewHolder>() {
 
@@ -16,8 +17,7 @@ class ListAdapter(private val list: List<ListItemModel>) : RecyclerView.Adapter<
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val listItem = list[position]
-        holder.textView.text = "${position+1}: ${listItem.text}"
-
+        holder.textView.text = "${position+1}: %.${Preferences.precision}f".format(Locale.ENGLISH,listItem.value)
     }
 
 

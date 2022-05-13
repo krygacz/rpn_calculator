@@ -1,4 +1,4 @@
 package com.example.rpncalculator
 
-data class ListItemModel(var text: String) {
+data class ListItemModel(var value: Double) {
 }
