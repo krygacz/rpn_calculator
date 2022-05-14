@@ -2,16 +2,15 @@ package com.example.rpncalculator
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatDelegate
 import com.google.android.material.switchmaterial.SwitchMaterial
 import java.lang.StrictMath.max
 import kotlin.math.min
 
 class SettingsActivity : AppCompatActivity() {
-    private var darkMode: Boolean = Preferences.darkMode
-    private var precision = Preferences.precision
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
@@ -34,24 +33,26 @@ class SettingsActivity : AppCompatActivity() {
         }
 
         findViewById<Button>(R.id.buttonSave).setOnClickListener {
-            Preferences.precision = this.precision
-            Preferences.darkMode = this.darkMode
             this.finish()
         }
     }
 
     private fun updatePrecision(change: Int? = null) {
         if (change != null)
-            this.precision += change
-        this.precision = min(max(this.precision, 0), 10)
+            Preferences.precision += change
+        Preferences.precision = min(max(Preferences.precision, 0), 10)
         val textViewPrecision = findViewById<TextView>(R.id.textViewPrecision)
-        textViewPrecision.text = this.precision.toString()
+        textViewPrecision.text = Preferences.precision.toString()
     }
 
     private fun updateDarkMode(change: Boolean? = null) {
         if (change != null)
-            this.darkMode = change
+            if (change) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            }
         val switchDarkMode = findViewById<SwitchMaterial>(R.id.switchDarkMode)
-        switchDarkMode.isChecked = this.darkMode
+        switchDarkMode.isChecked = (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES)
     }
 }
