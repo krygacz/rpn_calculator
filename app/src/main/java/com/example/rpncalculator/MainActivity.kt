@@ -1,15 +1,9 @@
 package com.example.rpncalculator
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
-import android.view.Menu
-import android.view.MenuItem
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
@@ -21,8 +15,6 @@ import kotlin.collections.ArrayDeque
 import kotlin.math.pow
 
 class MainActivity : AppCompatActivity() {
-
-    private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
     private lateinit var stack: ArrayDeque<ListItemModel>
     private lateinit var recyclerView: RecyclerView
@@ -35,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
-        this.recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
+        this.recyclerView = findViewById(R.id.recyclerView)
         val layoutManager = LinearLayoutManager(this)
         layoutManager.reverseLayout = true
         layoutManager.stackFromEnd = true
@@ -48,7 +40,7 @@ class MainActivity : AppCompatActivity() {
 
         this.recyclerView.scrollToPosition(0)
 
-        this.input = findViewById<TextView>(R.id.inputTextView)
+        this.input = findViewById(R.id.inputTextView)
 
         for (i in 0..9) {
             findViewById<Button>(
@@ -122,18 +114,20 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-//    override fun onSupportNavigateUp(): Boolean {
-//        val navController = findNavController(R.id.nav_host_fragment_content_main)
-//        return navController.navigateUp(appBarConfiguration)
-//                || super.onSupportNavigateUp()
-//    }
+    @SuppressLint("NotifyDataSetChanged")
+    override fun onResume() {
+        super.onResume()
+        this.recyclerView.adapter!!.notifyDataSetChanged()
+    }
 
     private fun inputKey(value: String) {
         this.input.visibility = View.VISIBLE
-        this.input.text = input.text.toString() + value
+        val newInputValue = input.text.toString() + value
+        this.input.text = newInputValue
         this.recyclerView.scrollToPosition(0)
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun enter() {
         val input = findViewById<TextView>(R.id.inputTextView)
         this.stack.addFirst(ListItemModel(input.text.toString().toDouble()))

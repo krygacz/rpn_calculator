@@ -32,4 +32,7 @@
     <string name="buttonSwap">swap</string>
     <string name="buttonDrop">drop</string>
     <string name="buttonBackspace">backspace</string>
+    <string name="darkMode">Dark Mode</string>
+    <string name="save">Save</string>
+    <string name="decimalPrecision">Decimal Precision</string>
 </resources>
