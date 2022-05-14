@@ -3,8 +3,6 @@ package com.example.rpncalculator
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import android.widget.SeekBar
-import android.widget.Switch
 import android.widget.TextView
 import com.google.android.material.switchmaterial.SwitchMaterial
 import java.lang.StrictMath.max
@@ -29,7 +27,7 @@ class SettingsActivity : AppCompatActivity() {
             this.updatePrecision(+1)
         }
 
-        findViewById<Switch>(R.id.switchDarkMode).setOnCheckedChangeListener { _, isChecked ->
+        findViewById<SwitchMaterial>(R.id.switchDarkMode).setOnCheckedChangeListener { _, isChecked ->
             updateDarkMode(
                 isChecked
             )

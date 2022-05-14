@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
-import com.example.rpncalculator.databinding.ActivityMainBinding
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import java.util.*
@@ -15,7 +14,6 @@ import kotlin.collections.ArrayDeque
 import kotlin.math.pow
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding
     private lateinit var stack: ArrayDeque<ListItemModel>
     private lateinit var recyclerView: RecyclerView
     private lateinit var input: TextView
@@ -23,8 +21,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        this.binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_main)
 
 
         this.recyclerView = findViewById(R.id.recyclerView)
