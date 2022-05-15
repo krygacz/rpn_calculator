@@ -20,9 +20,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContentView(R.layout.activity_main)
-
 
         this.recyclerView = findViewById(R.id.recyclerView)
         val layoutManager = LinearLayoutManager(this)
@@ -31,7 +29,6 @@ class MainActivity : AppCompatActivity() {
         this.recyclerView.layoutManager = layoutManager
 
         this.stack = ArrayDeque()
-
         val adapter = ListAdapter(stack)
         this.recyclerView.adapter = adapter
 
@@ -67,7 +64,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         findViewById<Button>(R.id.buttonMultiply).setOnClickListener {
-            this.genericOperation { item1, item2 -> item1-item2 }
+            this.genericOperation { item1, item2 -> item1*item2 }
         }
 
         findViewById<Button>(R.id.buttonDivide).setOnClickListener {
@@ -110,7 +107,6 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-
     @SuppressLint("NotifyDataSetChanged")
     override fun onResume() {
         super.onResume()
@@ -124,11 +120,10 @@ class MainActivity : AppCompatActivity() {
         this.recyclerView.scrollToPosition(0)
     }
 
-    @SuppressLint("NotifyDataSetChanged")
     private fun enter() {
         val input = findViewById<TextView>(R.id.inputTextView)
         this.stack.addFirst(ListItemModel(input.text.toString().toDouble()))
-        this.recyclerView.adapter!!.notifyDataSetChanged()
+        this.recyclerView.adapter!!.notifyItemInserted(0)
         this.input.text = ""
         this.input.visibility = View.GONE
     }
@@ -147,7 +142,6 @@ class MainActivity : AppCompatActivity() {
         if(this.stack.size < 2) return
         Collections.swap(this.stack, 0, 1)
         this.recyclerView.adapter!!.notifyItemMoved(0,1)
-        this.recyclerView.adapter!!.notifyItemRangeChanged(0, 2)
     }
 
     private fun drop() {
@@ -156,7 +150,6 @@ class MainActivity : AppCompatActivity() {
         input.text = this.stack.removeFirst().value.toString()
         input.visibility = View.VISIBLE
         this.recyclerView.adapter!!.notifyItemRemoved(0)
-        this.recyclerView.adapter!!.notifyItemRangeChanged(0, this.recyclerView.adapter!!.itemCount)
     }
 
     private fun changeSign() {

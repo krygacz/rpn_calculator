@@ -4,30 +4,49 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?attr/colorSurface"
     tools:context=".MainActivity">
-
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent">
 
-        <LinearLayout style="@style/GridRow">
+        <LinearLayout
+            style="@style/GridRow"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
 
             <Button
                 android:id="@+id/buttonDrop"
-                style="@style/GridButtonDark"
-                android:text="@string/buttonDrop" />
+                style="@style/GridButtonIcon"
+                app:icon="@drawable/ic_baseline_arrow_downward_24" />
 
             <Button
                 android:id="@+id/buttonSwap"
-                style="@style/GridButtonDark"
-                android:text="@string/buttonSwap" />
+                style="@style/GridButtonIcon"
+                app:icon="@drawable/ic_baseline_swap_vert_24" />
 
+            <Button
+                android:id="@+id/buttonAC"
+                style="@style/GridButtonIcon"
+                app:icon="@drawable/ic_baseline_delete_forever_24" />
+
+        </LinearLayout>
+
+        <LinearLayout style="@style/GridRow">
+
+            <Button
+                android:id="@+id/buttonChangeSign"
+                style="@style/GridButtonDark"
+                android:text="@string/buttonChangeSign" />
 
             <Button
                 android:id="@+id/buttonPower"
@@ -38,27 +57,13 @@
                 android:id="@+id/buttonRoot"
                 style="@style/GridButtonDark"
                 android:text="@string/buttonRoot" />
-        </LinearLayout>
-
-        <LinearLayout style="@style/GridRow">
-
-
-            <Button
-                android:id="@+id/buttonBackspace"
-                style="@style/GridButtonDark"
-                android:layout_width="0dp"
-                android:layout_weight="2"
-                android:text="@string/buttonBackspace" />
-
-            <Button
-                android:id="@+id/buttonAC"
-                style="@style/GridButtonDark"
-                android:text="@string/buttonAC" />
 
             <Button
                 android:id="@+id/buttonDivide"
                 style="@style/GridButtonDark"
-                android:text="@string/buttonDivide" />
+                android:text="@string/buttonDivide"
+                android:textStyle="bold" />
+
         </LinearLayout>
 
         <LinearLayout style="@style/GridRow">
@@ -84,7 +89,6 @@
                 style="@style/GridButtonDark"
                 android:text="@string/buttonMultiply" />
 
-
         </LinearLayout>
 
         <LinearLayout style="@style/GridRow">
@@ -109,6 +113,7 @@
                 android:id="@+id/buttonSubtract"
                 style="@style/GridButtonDark"
                 android:text="@string/buttonSubtract" />
+
         </LinearLayout>
 
         <LinearLayout style="@style/GridRow">
@@ -133,7 +138,6 @@
                 style="@style/GridButtonDark"
                 android:text="@string/buttonAdd" />
 
-
         </LinearLayout>
 
         <LinearLayout style="@style/GridRow">
@@ -144,58 +148,55 @@
                 android:text="@string/buttonKey0" />
 
             <Button
-                android:id="@+id/buttonChangeSign"
-                style="@style/GridButtonLight"
-                android:text="@string/buttonChangeSign" />
-
-            <Button
                 android:id="@+id/buttonDot"
                 style="@style/GridButtonLight"
                 android:text="@string/buttonDot" />
 
             <Button
+                android:id="@+id/buttonBackspace"
+                style="@style/GridButtonLight"
+                app:icon="@drawable/ic_outline_backspace_24" />
+
+            <Button
                 android:id="@+id/buttonEnter"
                 style="@style/GridButtonDarkAccent"
-                android:text="@string/buttonEnter" />
+                app:icon="@drawable/ic_baseline_arrow_upward_24" />
 
         </LinearLayout>
+
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
+        android:animateLayoutChanges="true"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="3">
-
-
-        </androidx.recyclerview.widget.RecyclerView>
+            android:layout_weight="3" />
 
         <TextView
             android:id="@+id/inputTextView"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="?attr/colorSurfaceVariant"
             android:drawablePadding="5sp"
-            android:fontFamily="monospace"
-            android:padding="8dp"
-            android:textSize="28sp"
-            app:drawableStartCompat="@drawable/ic_baseline_subdirectory_arrow_right_24"
-            app:drawableTint="@color/primaryDarkColor" />
-    </LinearLayout>
+            android:fontFamily="sans-serif-light"
+            android:paddingVertical="8dp"
+            android:paddingHorizontal="18sp"
+            android:textSize="32sp"
+            app:drawableTint="?attr/colorOnSurfaceVariant"
+            tools:text="text" />
 
+    </LinearLayout>
 
     <Button
         android:id="@+id/buttonSettings"
@@ -210,6 +211,5 @@
         app:iconSize="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

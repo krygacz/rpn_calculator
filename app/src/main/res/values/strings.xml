@@ -1,30 +1,24 @@
 <resources>
     <string name="app_name">RPN Calculator</string>
     <string name="action_settings">Settings</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
-
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="buttonEnter">Enter</string>
     <string name="buttonDot">.</string>
     <string name="buttonChangeSign">+/-</string>
     <string name="buttonKey0">0</string>
-    <string name="buttonSubtract">-</string>
+    <string name="buttonSubtract">−</string>
     <string name="buttonAdd">+</string>
     <string name="buttonKey3">3</string>
     <string name="buttonKey2">2</string>
     <string name="buttonKey1">1</string>
     <string name="buttonKey4">4</string>
-    <string name="buttonDivide">/</string>
-    <string name="buttonMultiply">*</string>
+    <string name="buttonDivide">÷</string>
+    <string name="buttonMultiply">×</string>
     <string name="buttonKey6">6</string>
     <string name="buttonKey5">5</string>
-    <string name="buttonPower">yx</string>
-    <string name="buttonRoot">prw x</string>
+    <string name="buttonPower">x\u02b8</string>
+    <string name="buttonRoot">√</string>
     <string name="buttonKey7">7</string>
     <string name="buttonKey8">8</string>
     <string name="buttonKey9">9</string>
@@ -35,4 +29,6 @@
     <string name="darkMode">Dark Mode</string>
     <string name="save">Save</string>
     <string name="decimalPrecision">Decimal Precision</string>
+    <string name="goBack">go back</string>
+    <string name="settings">Settings</string>
 </resources>

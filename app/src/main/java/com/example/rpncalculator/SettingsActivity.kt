@@ -1,8 +1,8 @@
 package com.example.rpncalculator
 
+import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatDelegate
@@ -32,7 +32,7 @@ class SettingsActivity : AppCompatActivity() {
             )
         }
 
-        findViewById<Button>(R.id.buttonSave).setOnClickListener {
+        findViewById<Button>(R.id.buttonReturn).setOnClickListener {
             this.finish()
         }
     }
@@ -53,6 +53,17 @@ class SettingsActivity : AppCompatActivity() {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             }
         val switchDarkMode = findViewById<SwitchMaterial>(R.id.switchDarkMode)
-        switchDarkMode.isChecked = (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES)
+        switchDarkMode.isChecked = when (AppCompatDelegate.getDefaultNightMode()) {
+            AppCompatDelegate.MODE_NIGHT_YES -> true
+            AppCompatDelegate.MODE_NIGHT_NO -> false
+            else -> when (resources.configuration.uiMode and
+                    Configuration.UI_MODE_NIGHT_MASK) {
+                Configuration.UI_MODE_NIGHT_YES -> true
+                Configuration.UI_MODE_NIGHT_NO -> false
+                Configuration.UI_MODE_NIGHT_UNDEFINED -> false
+                else -> false
+            }
+
+        }
     }
 }
